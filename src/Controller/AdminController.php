@@ -34,7 +34,8 @@ class AdminController {
         return $app['twig']->render('admin.html.twig', array(
             'links' => $links,
             'users' => $users,
-            'pages' => $pages));
+            'pages' => $pages,
+            'nmPage' => $nmPage));
     }
 
     /**
