@@ -18,11 +18,24 @@ class AdminController {
      * @param Application $app Silex application
      */
     public function indexAction(Application $app) {
-        $links = $app['dao.link']->findAll();
+        $nmPage = null;
+
+        if (!isset($_GET["page"])) {
+            $links = $app['dao.link']->limitedFind($nmPage);
+        } else {
+            $nmPage = $_GET["page"];
+            $links = $app['dao.link']->limitedFind($nmPage);
+        }
+        
+        $pages = $app['dao.link']->findPages();
         $users = $app['dao.user']->findAll();
+        
+
         return $app['twig']->render('admin.html.twig', array(
             'links' => $links,
-            'users' => $users));
+            'users' => $users,
+            'pages' => $pages,
+            'nmPage' => $nmPage));
     }
 
     /**

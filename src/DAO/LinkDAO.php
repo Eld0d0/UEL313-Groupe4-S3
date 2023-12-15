@@ -45,6 +45,58 @@ class LinkDAO extends DAO
         }
         return $_links;
     }
+    
+
+    /**
+     * Return a list of 15 links, sorted by date (most recent first).
+     *
+     * @return array A list of all links.
+     */
+    public function limitedFind($nmPage) {
+
+        $Offset = 0;
+
+        if (!is_null($nmPage)){
+            $Offset = (($nmPage - 1) * 15);
+        }
+
+        $sql = "
+            SELECT *
+            FROM tl_liens
+            ORDER BY lien_id DESC
+            LIMIT {Offset}, 15
+        ";
+
+        $sql = str_replace('{Offset}', $Offset, $sql);
+
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convert query result to an array of domain objects
+        $_links = array();
+        foreach ($result as $row) {
+            $linkId          = $row['lien_id'];
+            $_links[$linkId] = $this->buildDomainObject($row);
+        }
+        return $_links;
+    }
+
+    /**
+     * Return the number of links.
+     *
+     * @return array A list of all links.
+     */
+    public function findPages() {
+        $sql = "
+            SELECT COUNT(*)
+            FROM tl_liens
+        ";
+        $result = $this->getDb()->fetchAll($sql);
+    
+        $count = $result[0]['COUNT(*)'];
+        $pages = ceil($count / 15) - 1;
+    
+        return $pages;
+    }    
 
     /**
      * Returns a link matching the supplied id.
