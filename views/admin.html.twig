@@ -72,8 +72,9 @@
         </div>
         <div>
             <p>Pagination</p>
+            <a class="btn-pagination" href="/admin" title="Page n°1">1</a>
             {% for i in 1..pages %}
-                <a class="btn-pagination" href="?page={{ i }}" title="Page n°{{ i }}">{{ i }}</a>
+                <a class="btn-pagination" href="?page={{ i + 1 }}" title="Page n°{{ i + 1 }}">{{ i + 1 }}</a>
             {% endfor %}
         </div>
         {% else %}

@@ -52,13 +52,23 @@ class LinkDAO extends DAO
      *
      * @return array A list of all links.
      */
-    public function limitedFind() {
+    public function limitedFind($nmPage) {
+
+        $Offset = 0;
+
+        if (!is_null($nmPage)){
+            $Offset = (($nmPage - 1) * 15);
+        }
+
         $sql = "
-            SELECT * 
-            FROM tl_liens 
+            SELECT *
+            FROM tl_liens
             ORDER BY lien_id DESC
-            LIMIT 0, 2
+            LIMIT {Offset}, 15
         ";
+
+        $sql = str_replace('{Offset}', $Offset, $sql);
+
         $result = $this->getDb()->fetchAll($sql);
 
         // Convert query result to an array of domain objects
@@ -82,8 +92,8 @@ class LinkDAO extends DAO
         ";
         $result = $this->getDb()->fetchAll($sql);
     
-        $pages = $result[0]['COUNT(*)'];
-        $pages = ceil($pages / 2);
+        $count = $result[0]['COUNT(*)'];
+        $pages = ceil($count / 15) - 1;
     
         return $pages;
     }    
