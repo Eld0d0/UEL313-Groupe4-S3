@@ -10,7 +10,64 @@
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="theme-customizer inactive">
+            <span class="glyphicon glyphicon-pencil inactive"></span><p class="inactive">Personnalisation</p>
+        
+            <div class="header active">
+                <p><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Thème <span class="close" id="closeCustomizer">X</span></p>
+                
+                
+                <div class="colors active">
+                    <fieldset>
+                        <input type="color" id="customizerPrimaryColor">
+                        <label for="customizerPrimaryColor" style="display:inline;text-indent: 10px;">Primaire</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerPrimaryColorHover">
+                        <label for="customizerPrimaryColorHover" style="display:inline;text-indent: 10px;">Primaire (survol)</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerPrimaryColorActive">
+                        <label for="customizerPrimaryColorActive" style="display:inline;text-indent: 10px;">Primaire (actif)</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerBackgroundColor">
+                        <label for="customizerBackgroundColor" style="display:inline;text-indent: 10px;">Fond</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerFontColor">
+                        <label for="customizerFontColor" style="display:inline;text-indent: 10px;">Texte</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerRowHover">
+                        <label for="customizerRowHover" style="display:inline;text-indent: 10px;">Lignes (survol)</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerLinkColor">
+                        <label for="customizerLinkColor" style="display:inline;text-indent: 10px;">Liens</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerMenu">
+                        <label for="customizerMenu" style="display:inline;text-indent: 10px;">Menu (texte)</label>
+                    </fieldset>
+
+                    <fieldset>
+                        <input type="color" id="customizerMenuHover">
+                        <label for="customizerMenuHover" style="display:inline;text-indent: 10px;">Menu (texte survol/actif)</label>
+                    </fieldset>
+                    
+                </div>
+            </div>
+
+        </div>
+        <nav class="navbar navbar-default navbar-fixed-top navbar-inverse theme-primary" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-target">
@@ -55,7 +112,10 @@
     
     <!-- jQuery -->
     <script src="{{ app.request.basepath }}/lib/jquery/jquery.min.js"></script>
+    <script src="{{ app.request.basepath }}/lib/jquery/jquery.cookie.min.js"></script>
     <!-- JavaScript Boostrap plugin -->
     <script src="{{ app.request.basepath }}/lib/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Theme Customizer -->
+    <script src="{{ app.request.basepath }}/js/theme.js"></script>
 </body>
 </html>
