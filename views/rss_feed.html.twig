@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+{# Le fichier RSS résultant a été validé via https://validator.w3.org/feed/ #}
+{# Les éléments passé au flux ont été choisis en tenant compte des recommendations trouvées ici : https://www.rssboard.org/rss-specification#comments #}
+<rss version="2.0">
+	<channel>
+    <title>Flux RSS Watson</title>
+	<description>Les 15 derniers liens enregistrés dans la BDD Watson</description>
+	<link>http://localhost:yourPort/</link>
+	<language>fr-FR</language>
+	
+	{% for link in links %}
+	<item>
+		<title>{{ link.title }}</title>
+		<link>{{ link.url }}</link>
+		<description>{{ link.desc }}</description>
+		<guid>{{ link.url }}</guid>
+		{#Si l'article a des tags on les concatene dans un string que l'on passe dans l'élément category #}
+		{% if link.tags %}
+			{% set categories = "" %}
+			{% for tag in link.tags %}
+				{% set categories = categories ~ tag.title %}
+			{% endfor %}
+			<category>{{categories}}<category>
+		{% endif %}
+	</item>
+	{% endfor %}
+	</channel>
+</rss> 
+

@@ -1,15 +1,15 @@
-body { 
-    padding-top: 100px; 
+body {
+    padding-top: 100px;
 }
 
-#logo{
-	width:230px;
-	height: 0;
-	display: block;
-	overflow: hidden;
-	padding-top: 76px;
-	font-size: 0;
-	background: url("../images/logo.png") no-repeat center center;
+#logo {
+    width: 230px;
+    height: 0;
+    display: block;
+    overflow: hidden;
+    padding-top: 76px;
+    font-size: 0;
+    background: url("../images/logo.png") no-repeat center center;
 }
 
 .footer {
@@ -19,7 +19,8 @@ body {
     margin-top: 30px;
 }
 
-.articleTitle:hover, .articleTitle:focus {
+.articleTitle:hover,
+.articleTitle:focus {
     text-decoration: none;
 }
 
@@ -31,4 +32,9 @@ body {
 #errorPanel {
     padding-top: 30px;
     padding-bottom: 10px;
+}
+
+.glyphicon-th-list {
+    color: #f39c11;
+    margin-right: 5px;
 }
