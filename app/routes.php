@@ -34,4 +34,4 @@ $app->match('/admin/user/{id}/edit', "Watson\Controller\AdminController::editUse
 $app->get('/admin/user/{id}/delete', "Watson\Controller\AdminController::deleteUserAction")->bind('admin_user_delete');
 
 // rssfeed
-$app->get('/rss-feed.xml', "Watson\Controller\RssFeedController::deleteUserAction")->bind('rss_feed');
+$app->get('/rss-feed', "Watson\Controller\RssFeedController::getFeed")->bind('rss_feed');
